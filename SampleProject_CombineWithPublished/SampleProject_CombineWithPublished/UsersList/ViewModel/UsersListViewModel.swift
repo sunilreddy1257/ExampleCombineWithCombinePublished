@@ -9,7 +9,14 @@ import Foundation
 import Combine
 class UsersListViewModel {
     
-    @Published var usersList = [Users]()
+    @Published var usersList = [Users]() {
+        willSet {
+            print("will set executed")
+        }
+        didSet {
+            print("did set executed")
+        }
+    }
     private var cancellables = Set<AnyCancellable>()
     
     func getUserList() {
