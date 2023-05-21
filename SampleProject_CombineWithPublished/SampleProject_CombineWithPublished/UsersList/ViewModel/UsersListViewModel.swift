@@ -21,8 +21,8 @@ class UsersListViewModel {
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
-            } receiveValue: { usersData in
-                self.usersList = usersData
+            } receiveValue: {[weak self] usersData in
+                self?.usersList = usersData
             }
             .store(in: &self.cancellables)
     }
